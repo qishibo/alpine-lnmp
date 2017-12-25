@@ -13,21 +13,26 @@
  ### DockerHub
 
  ```
-docker pull qii404/xxxx
-docker run -it -p80:80 -p3306:3306 --name alpine-lnmp alpine-lnmp:1.0
+docker pull qii404/alpine-lnmp
+docker run -it -p80:80 -p3306:3306 --name alpine-lnmp alpine-lnmp:latest
  ```
 
  ### Build Yourself (if you want)
 
  ```
-cd folder;
-docker build -t alpine-lnmp:1.0 .
-docker run -it -p80:80 -p3306:3306 --name alpine-lnmp alpine-lnmp:1.0
+cd alpine-lnmp;
+docker build -t alpine-lnmp:latest .
+docker run -it -p80:80 -p3306:3306 --name alpine-lnmp alpine-lnmp:latest
  ```
 
  -------
 
+## Mysql Password
+
+> user:root  password:root
+
+
 view
- [http：//localhost](http：//localhost), you will see
+ [http：//localhost](http：//localhost), you will see yours
 
  ![phpinfo](https://ws1.sinaimg.cn/large/71405cably1fmt3fod4nuj20oe0i2djf.jpg)

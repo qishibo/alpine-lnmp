@@ -1,6 +1,6 @@
 # alpine lnmp
 
-> lnmp based on alpine, total size is only 200MB.
+> Pure lnmp environment running in docker, based on alpine, total size is only 200MB and compressed size is only 70MB.
 
 2017.12.25 versions:
 

@@ -70,4 +70,4 @@ docker run -it -p80:80 -p3306:3306 --name alpine-lnmp alpine-lnmp:latest
 
 view [http://localhost](http://localhost), you will see yours
 
-![phpinfo](https://ws1.sinaimg.cn/large/71405cably1fmt3fod4nuj20oe0i2djf.jpg)
+![phpinfo](http://ws1.sinaimg.cn/large/71405cably1fmt3fod4nuj20oe0i2djf.jpg)

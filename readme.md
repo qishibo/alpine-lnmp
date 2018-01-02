@@ -61,7 +61,7 @@ docker run -itd -p80:80 -p3306:3306 -v /Your-Code-Path:/usr/share/nginx/html --n
 
 ### Build Yourself (if you want)
 
-```
+```bash
 cd alpine-lnmp;
 docker build -t alpine-lnmp:latest .
 
@@ -79,7 +79,7 @@ docker run -itd -p80:80 -p3306:3306 -v /Your-Code-Path:/usr/share/nginx/html --n
 > user:root
 password:root
 
-```
+```bash
 # if you want to mount my.cnf yourself
 docker run -v my.cnf:/etc/mysql/my.cnf ...
 
@@ -92,7 +92,7 @@ mysql -h localhost -uroot -proot
 
 ### Nginx
 
-```
+```bash
 # if you want to mount your nginx.conf
 docker run -v nginx.conf:/etc/nginx/nginx.conf ...
 

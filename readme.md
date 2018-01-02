@@ -48,9 +48,15 @@
 
 ### DockerHub
 
-```
+```bash
+# pull the image
 docker pull qii404/alpine-lnmp
-docker run -it -p80:80 -p3306:3306 --name alpine-lnmp alpine-lnmp:latest
+
+# default index.php is phpinfo if without '-v'
+docker run -itd -p80:80 -p3306:3306 --name alpine-lnmp qii404/alpine-lnmp:latest
+
+# or mount your application code
+docker run -itd -p80:80 -p3306:3306 -v /Your-Code-Path:/usr/share/nginx/html --name alpine-lnmp qii404/alpine-lnmp:latest
 ```
 
 ### Build Yourself (if you want)
@@ -58,15 +64,47 @@ docker run -it -p80:80 -p3306:3306 --name alpine-lnmp alpine-lnmp:latest
 ```
 cd alpine-lnmp;
 docker build -t alpine-lnmp:latest .
-docker run -it -p80:80 -p3306:3306 --name alpine-lnmp alpine-lnmp:latest
+
+# default index.php is phpinfo if without '-v'
+docker run -itd -p80:80 -p3306:3306 --name alpine-lnmp alpine-lnmp:latest
+
+# or mount your application code
+docker run -itd -p80:80 -p3306:3306 -v /Your-Code-Path:/usr/share/nginx/html --name alpine-lnmp alpine-lnmp:latest
 ```
 
  -------
 
-## Mysql Password
+### Mysql
 
-> user:root  password:root
+> user:root
+password:root
 
+```
+# if you want to mount my.cnf yourself
+docker run -v my.cnf:/etc/mysql/my.cnf ...
+
+# if you want to mount mysql datadir
+docker run -v /your_data_dir/:/var/lib/mysql/ ...
+
+# connect
+mysql -h localhost -uroot -proot
+```
+
+### Nginx
+
+```
+# if you want to mount your nginx.conf
+docker run -v nginx.conf:/etc/nginx/nginx.conf ...
+
+# if you want to add more nginx conf to conf.d
+docker run -v /your_conf.d/:/etc/nginx/conf.d/
+
+# root path
+/usr/share/nginx/html
+```
+
+
+### Final
 
 view [http://localhost](http://localhost), you will see yours
 

@@ -1,8 +1,9 @@
-FROM alpine:latest
+FROM alpine:edge
 
-RUN echo 'http://mirrors.aliyun.com/alpine/latest-stable/main/' > /etc/apk/repositories; \
-    echo 'http://mirrors.aliyun.com/alpine/latest-stable/community/' >> /etc/apk/repositories; \
-    apk update;
+# if in China, use ali mirrors
+# RUN echo 'http://mirrors.aliyun.com/alpine/latest-stable/main/' > /etc/apk/repositories; \
+#     echo 'http://mirrors.aliyun.com/alpine/latest-stable/community/' >> /etc/apk/repositories; \
+#     apk update;
 
 
 # install nginx
@@ -13,6 +14,7 @@ RUN apk add nginx; \
 
 # install php
 RUN apk add php7 \
+            php7-fpm \
             php7-ctype \
             php7-curl \
             php7-dom \
@@ -46,12 +48,8 @@ RUN apk add php7 \
             php7-zlib;
 
 
-# install php-fpm
-RUN apk add php7-fpm
-
-
 # install mysql
-RUN apk add mysql mysql-client;
+RUN apk add mysql mysql-client; rm -rf /etc/my.cnf.d/*;
 
 
 # copy files

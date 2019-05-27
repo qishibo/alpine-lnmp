@@ -2,11 +2,11 @@
 
 > Pure lnmp environment running in docker, based on alpine, total size is only 200MB and compressed size is only 70MB.
 
-2017.12.25 versions:
+hitherto 2019.05.27 versions:
 
- - nginx 1.12.2
- - php 7.1.12
- - mysql Ver 15.1 Distrib 10.1.28-MariaDB
+ - nginx 1.16.0
+ - php 7.2.18
+ - mysql 10.3.15-MariaDB
 
 ## PHP Extensions
 
@@ -46,7 +46,7 @@
 
 ## Usage
 
-### DockerHub
+### Basic
 
 ```bash
 # pull the image
@@ -54,43 +54,39 @@ docker pull qii404/alpine-lnmp
 
 # default index.php is phpinfo if without '-v'
 docker run -itd -p80:80 -p3306:3306 --name alpine-lnmp qii404/alpine-lnmp:latest
-
-# or mount your application code
-docker run -itd -p80:80 -p3306:3306 -v /Your-Code-Path:/usr/share/nginx/html --name alpine-lnmp qii404/alpine-lnmp:latest
 ```
 
-### Build Yourself (if you want)
+view [http://localhost](http://localhost) after two minutes [mysql is initing while starting...], you will see yours
 
-```bash
-cd alpine-lnmp;
-docker build -t alpine-lnmp:latest .
-
-# default index.php is phpinfo if without '-v'
-docker run -itd -p80:80 -p3306:3306 --name alpine-lnmp alpine-lnmp:latest
-
-# or mount your application code
-docker run -itd -p80:80 -p3306:3306 -v /Your-Code-Path:/usr/share/nginx/html --name alpine-lnmp alpine-lnmp:latest
-```
+![phpinfo](https://sinaimg.qii404.me/large/71405cably1g3ftuz528lj20qf0ll0wx.jpg)
 
  -------
 
-### Mysql
-
-> user:root
-password:root
+### Mount your code
 
 ```bash
+# mount your application code
+docker run -itd -p80:80 -p3306:3306 -v /Your-Code-Path:/usr/share/nginx/html --name alpine-lnmp qii404/alpine-lnmp:latest
+```
+
+### Mysql
+
+> user:`root`    password:`root`
+
+```bash
+# connect
+mysql -h 127.0.0.1 -uroot -proot
+
 # if you want to mount my.cnf yourself
 docker run -v my.cnf:/etc/mysql/my.cnf ...
 
 # if you want to mount mysql datadir
 docker run -v /your_data_dir/:/var/lib/mysql/ ...
-
-# connect
-mysql -h localhost -uroot -proot
 ```
 
 ### Nginx
+
+> root path: `/usr/share/nginx/html`
 
 ```bash
 # if you want to mount your nginx.conf
@@ -98,14 +94,4 @@ docker run -v nginx.conf:/etc/nginx/nginx.conf ...
 
 # if you want to add more nginx conf to conf.d
 docker run -v /your_conf.d/:/etc/nginx/conf.d/
-
-# root path
-/usr/share/nginx/html
 ```
-
-
-### Final
-
-view [http://localhost](http://localhost), you will see yours
-
-![phpinfo](http://7xsudm.com1.z0.glb.clouddn.com/%E6%B7%B1%E5%BA%A6%E6%88%AA%E5%9B%BE_%E9%80%89%E6%8B%A9%E5%8C%BA%E5%9F%9F_20171225163005.png)

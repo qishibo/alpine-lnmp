@@ -58,7 +58,7 @@ docker run -itd -p80:80 -p3306:3306 --name alpine-lnmp qii404/alpine-lnmp:latest
 
 view [http://localhost](http://localhost) after two minutes [mysql is initing while starting...], you will see yours
 
-![phpinfo](https://sinaimg.qii404.me/large/71405cably1g3ftuz528lj20qf0ll0wx.jpg)
+![phpinfo](https://imgup.qii404.me/71405cably1g3ftuz528lj20qf0ll0wx.jpg)
 
  -------
 
